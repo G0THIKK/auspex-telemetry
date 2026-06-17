@@ -1,0 +1,19 @@
+# data (downloaded separately — do not commit)
+data/train/
+data/test/
+data/*.zip
+labeled_anomalies.csv
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# os / editor
+.DS_Store
+.ipynb_checkpoints/
+
+# local tooling (machine-specific launch config)
+.claude/

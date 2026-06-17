@@ -35,6 +35,84 @@ ISS_CHANNELS = {
     "NODE3000005": "Urine tank quantity (%)",
 }
 
+# Plain-English explanation of each channel: what it is, what it means in
+# everyday words, why an operator watches it, and its unit. Surfaced in the
+# dashboard's Live ISS feed when you click a channel.
+ISS_CHANNEL_INFO = {
+    "USLAB000018": {
+        "unit": "",
+        "what": "One of four numbers (a 'quaternion') describing the station's orientation relative to the Earth below it.",
+        "plain": "Together, the four quaternion numbers say exactly which way the ISS is pointed in 3-D. This one (Q0) is the 'overall' component — near 1.0 when the station is holding a steady, level attitude.",
+        "matters": "The station must hold a precise attitude so arrays catch the Sun, antennas aim at relays, and visiting ships can dock. A jump here means it's turning — on purpose or not.",
+    },
+    "USLAB000019": {
+        "unit": "",
+        "what": "The second component of the station's orientation quaternion (rotation about one axis).",
+        "plain": "Part of the same 4-number 'which way am I pointed' description. It stays near 0 while the station holds its normal orientation and grows as it tilts about that axis.",
+        "matters": "Watched together with the other three, it's how flight controllers see the ISS's exact pointing — and catch unexpected motion early.",
+    },
+    "USLAB000020": {
+        "unit": "",
+        "what": "The third component of the station's orientation quaternion (rotation about another axis).",
+        "plain": "Another piece of the station's 3-D pointing description. Small and steady normally; it moves when the ISS rotates about that axis.",
+        "matters": "Drift in the quaternion components is the first sign of an attitude change — a maneuver, a thruster firing, or a disturbance.",
+    },
+    "USLAB000021": {
+        "unit": "",
+        "what": "The fourth component of the station's orientation quaternion (rotation about the third axis).",
+        "plain": "The last of the four numbers that pin down which way the ISS faces. Near 0 in normal attitude.",
+        "matters": "If the quaternion shifts when no maneuver was planned, controllers want to know why — that's exactly what the detector is watching for.",
+    },
+    "USLAB000040": {
+        "unit": "°",
+        "what": "The angle between the Sun and the plane of the station's orbit (the 'beta angle').",
+        "plain": "It says how high the Sun sits relative to the station's racetrack around Earth. Near 0° the ISS dives through Earth's shadow every orbit; near ±60–75° it's in almost constant sunlight.",
+        "matters": "It drives how much power the solar arrays make and how hot or cold the station runs, so controllers track it constantly.",
+    },
+    "USLAB000045": {
+        "unit": "°C",
+        "what": "The spin-bearing temperature inside Control Moment Gyroscope #1.",
+        "plain": "CMGs are heavy wheels spinning ~6,600 rpm that turn the station without burning any fuel. This is how warm one of their bearings is running.",
+        "matters": "A bearing creeping hot is an early sign of wear — and the CMGs are how the ISS points itself, so a failure is a big deal.",
+    },
+    "USLAB000046": {
+        "unit": "°C",
+        "what": "The spin-bearing temperature inside Control Moment Gyroscope #2.",
+        "plain": "One of the four giant gyroscopes that steer the station fuel-free. This is its bearing temperature.",
+        "matters": "Comparing the gyros' temperatures helps spot one starting to struggle before it actually fails.",
+    },
+    "USLAB000047": {
+        "unit": "°C",
+        "what": "The spin-bearing temperature inside Control Moment Gyroscope #3.",
+        "plain": "Another of the station's steering gyroscopes — this reading is how hot its spinning bearing is.",
+        "matters": "Steady, similar temperatures across the gyros mean healthy attitude control; an outlier is worth a look.",
+    },
+    "S0000004": {
+        "unit": "°",
+        "what": "The rotation angle of the big joint that swings the port solar arrays to follow the Sun.",
+        "plain": "As the ISS circles Earth, this Solar Alpha Rotary Joint slowly turns the whole port array wing so it keeps facing the Sun — like a sunflower. The number is its current angle.",
+        "matters": "If it stops or stutters, the arrays stop tracking the Sun and power drops. The real ISS once had a rotary joint grind itself up with metal debris — exactly the kind of fault this catches.",
+    },
+    "S4000001": {
+        "unit": "V",
+        "what": "The drive voltage on the 1A solar-array power channel.",
+        "plain": "Roughly the electrical 'pressure' coming off one solar-array wing — around 160 V in sunlight, dropping as the station passes into Earth's shadow.",
+        "matters": "It's a direct readout of whether that array is making power. A drop at the wrong moment points to an array or regulator problem.",
+    },
+    "P4000001": {
+        "unit": "V",
+        "what": "The drive voltage on the 2A solar-array power channel.",
+        "plain": "The electrical output 'pressure' from another solar-array wing, rising in sunlight and falling in eclipse each orbit.",
+        "matters": "Power is life-support on a spacecraft — an unexpected sag here is one of the first things controllers chase down.",
+    },
+    "NODE3000005": {
+        "unit": "%",
+        "what": "How full the station's urine storage tank is.",
+        "plain": "Yes, really. Node 3 holds the toilet and the system that recycles urine back into drinking water; this is the tank's fill level.",
+        "matters": "When it fills, the recycler processes it (or a cargo ship hauls waste away). A stuck reading can mean a plumbing fault — a genuine headache in orbit.",
+    },
+}
+
 
 # Plain-English, accessible explanations for each channel: what it is, a
 # friendly analogy, and why an operator cares (so an anomaly has meaning).
